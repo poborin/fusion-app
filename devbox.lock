@@ -1,0 +1,53 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "zola@latest": {
+      "last_modified": "2024-06-12T20:55:33Z",
+      "resolved": "github:NixOS/nixpkgs/a9858885e197f984d92d7fe64e9fff6b2e488d40#zola",
+      "source": "devbox-search",
+      "version": "0.18.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/w1ypig3f5x6a5hd2wq3hpa0ajy7izigf-zola-0.18.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/w1ypig3f5x6a5hd2wq3hpa0ajy7izigf-zola-0.18.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ihfcdsffljfjf2s20vmzydk671aa104s-zola-0.18.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ihfcdsffljfjf2s20vmzydk671aa104s-zola-0.18.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hla2sdm22b3rh3g46678x0ar88a4hyln-zola-0.18.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hla2sdm22b3rh3g46678x0ar88a4hyln-zola-0.18.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0pmhr7xh4jp4ddzqgqy6f1dk48pjpqd3-zola-0.18.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/0pmhr7xh4jp4ddzqgqy6f1dk48pjpqd3-zola-0.18.0"
+        }
+      }
+    }
+  }
+}
