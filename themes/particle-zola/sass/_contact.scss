@@ -12,11 +12,12 @@
 
     .form-title {
         text-align: center;
-        margin: 5px auto;
+        margin: 20px auto; // updated for consistency
         color: $sec;
     }
 
     .form-group {
+        width: 100%; // Ensure the form-group takes full width of the container
         margin-bottom: 15px;
 
         label {
@@ -33,13 +34,14 @@
 
         input,
         textarea {
-            width: 100%;
+            width: calc(100% - 22px); // Adjust for padding and border
             padding: 10px;
             font-size: 16px;
             border: 1px solid $gray;
             border-radius: 5px;
             outline: none;
             transition: border-color 0.3s ease-out;
+            box-sizing: border-box; // Ensure padding and border are included in width
 
             &:focus {
                 border-color: $button;
@@ -57,8 +59,10 @@
     }
 
     .submit-button {
-        display: inline-block;
-        padding: 10px 20px;
+        display: block; // Changed from `inline-block` to `block` to ensure it spans the entire width
+        width: calc(100% - 22px); // Adjust for padding and border
+        margin: 15px 0; // Adjusted margin for consistency
+        padding: 10px 0; // Adjust padding
         font-size: 16px;
         color: $main;
         background-color: $button;
@@ -68,6 +72,7 @@
         text-align: center;
         text-decoration: none;
         transition: background-color 0.3s ease-out;
+        box-sizing: border-box; // Ensure padding and border are included in width
 
         &:hover,
         &:focus {
