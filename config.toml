@@ -1,0 +1,28 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+theme = "particle-zola"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = false
+
+[extra]
+# Site settings
+description = "A blog about lorem ipsum dolor sit amet"
+
+# User settings
+username = "Fusion"
+user_description = "Welcome to Fusion, a cutting-edge platform designed to revolutionize the way sports coaches manage their administrative tasks. Our mission is to empower coaches by providing an integrated service, app, and web application that streamline training plan creation, athlete communication, video sharing, and performance tracking, allowing you to focus on what truly matters: coaching."
+user_title = "Your coaching companion"
+email = "my@email.com"
+twitter_username = "lorem_ipsum"
+github_username = "lorem_ipsum"
+gplus_username = "lorem_ipsum"
