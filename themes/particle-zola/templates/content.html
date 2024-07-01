@@ -71,12 +71,28 @@
   <button class="submit-button" type="submit">Submit</button>
 </form>
 
+<div id="toast" class="toast" style="display:none;">
+  <span id="toastMessage"></span>
+  <div class="spinner" id="formSpinner" style="display:none;"></div>
+</div>
+
 <script>
   async function submitForm(event) {
     event.preventDefault();
-    const url = 'https://script.google.com/macros/s/AKfycbwxqol1D2_fp7X-kBteOrFj2KngTEl2auDxxsS8ER7G1QN6eMPDja948ccEy9yDrIVR/exec'; // Ensure this is the correct and updated URL
 
-    const formData = new FormData(document.getElementById('contactForm'));
+    const form = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const spinner = document.getElementById('formSpinner');
+
+    // Lock the form and show spinner
+    form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+    toast.style.display = 'block';
+    toastMessage.innerText = 'Submitting...';
+    spinner.style.display = 'inline-block';
+
+    const url = 'https://script.google.com/macros/s/AKfycbwxqol1D2_fp7X-kBteOrFj2KngTEl2auDxxsS8ER7G1QN6eMPDja948ccEy9yDrIVR/exec';
+    const formData = new FormData(form);
     const data = new URLSearchParams(formData);
 
     try {
@@ -87,14 +103,24 @@
 
       const result = await response.json();
       if (result.result === 'success') {
-        alert('Your form has been submitted successfully.');
+        toastMessage.innerText = 'Your form has been submitted successfully.';
+        form.reset(); // Clear input after submission
       } else {
-        alert(`Error: ${JSON.stringify(result.error)}`);
+        toastMessage.innerText = `Error: ${JSON.stringify(result.error)}`;
       }
     } catch (error) {
       console.error('Error:', error);
-      alert(`There was an error submitting your form: ${error.message}`);
+      toastMessage.innerText = `There was an error submitting your form: ${error.message}`;
     }
+
+    // Unlock the form and hide spinner
+    form.querySelectorAll('input, textarea, button').forEach(el => el.disabled = false);
+    spinner.style.display = 'none';
+
+    // Hide the toast after 3 seconds
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 3000);
   }
 </script>
 {% endmacro contact %}
