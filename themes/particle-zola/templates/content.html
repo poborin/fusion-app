@@ -71,17 +71,24 @@
   <button class="submit-button" type="submit">Submit</button>
 </form>
 
-<!-- <div id="toast" class="toast" style="display:none;">
+<div id="toast" class="toast">
   <span id="toastMessage"></span>
-  <div class="spinner" id="formSpinner" style="display:none;"></div>
-</div> -->
+  <div class="spinner" id="formSpinner"></div>
+</div>
 
 <script>
   async function submitForm(event) {
     event.preventDefault();
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const formSpinner = document.getElementById('formSpinner');
 
-    const url = 'https://script.google.com/macros/s/AKfycbwxqol1D2_fp7X-kBteOrFj2KngTEl2auDxxsS8ER7G1QN6eMPDja948ccEy9yDrIVR/exec'; // Apply the correct deployed Google Apps Script URL
+    // Show the toast
+    toast.style.display = 'flex';
+    toastMessage.textContent = 'Submitting form...';
+    formSpinner.style.display = 'block';
 
+    const url = 'https://script.google.com/macros/s/AKfycbwxqol1D2_fp7X-kBteOrFj2KngTEl2auDxxsS8ER7G1QN6eMPDja948ccEy9yDrIVR/exec';
     const formData = new FormData(document.getElementById('contactForm'));
     const data = new URLSearchParams(formData);
 
@@ -92,15 +99,21 @@
       });
 
       const result = await response.json();
+      formSpinner.style.display = 'none'; // Hide spinner
       if (result.result === 'success') {
-        alert('Your form has been submitted successfully.');
+        toastMessage.textContent = 'Your form has been submitted successfully.';
       } else {
-        alert(`Error: ${JSON.stringify(result.error)}`);
+        toastMessage.textContent = `Error: ${JSON.stringify(result.error)}`;
       }
     } catch (error) {
       console.error('Error:', error);
-      alert(`There was an error submitting your form: ${error.message}`);
+      formSpinner.style.display = 'none'; // Hide spinner
+      toastMessage.textContent = `There was an error submitting your form: ${error.message}`;
     }
+
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 3000);
   }
 </script>
 {% endmacro contact %}
