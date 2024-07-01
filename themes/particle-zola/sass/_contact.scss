@@ -14,6 +14,11 @@
         text-align: center;
         margin: 20px auto; // updated for consistency
         color: $sec;
+
+        // Add this block to set primary text color to its <p> tag
+        p {
+            color: $text_primary;
+        }
     }
 
     .form-group {
