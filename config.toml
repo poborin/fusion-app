@@ -1,5 +1,6 @@
 # The URL the site will be built for
-base_url = "https://example.com"
+base_url = "https://poborin.github.io/fusion-app"
+# base_url = "file:///Users/poborin/prj/fusion_landing/public"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
