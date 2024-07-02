@@ -10,7 +10,7 @@
 </div>
 <div class="user-features">
   <div class="images-right">
-    <img alt="mountains" src="{{ config.base_url ~ "/img/mountains.jpg" }}" />
+    <img alt="mountains" src="{{ config.base_url ~ "/img/traning_plan.jpeg" }}" />
   </div>
   <div class="contents">
     <h3> Training Plan Creation </h3>
@@ -19,7 +19,7 @@
 </div>
 <div class="user-features">
   <div class="images-left">
-    <img alt="mountains" src="{{ config.base_url ~ "/img/skate.jpg" }}" />
+    <img alt="mountains" src="{{ config.base_url ~ "/img/communicate.jpeg" }}" />
   </div>
   <div class="contents-right">
     <h3> Team Communication </h3>
@@ -28,7 +28,7 @@
 </div>
 <div class="user-features">
   <div class="images-right">
-    <img alt="mountains" src="{{ config.base_url ~ "/img/mountains.jpg" }}" />
+    <img alt="mountains" src="{{ config.base_url ~ "/img/profile.jpeg" }}" />
   </div>
   <div class="contents">
     <h3> Athlete Profiles </h3>
@@ -37,7 +37,7 @@
 </div>
 <div class="user-features">
   <div class="images-left">
-    <img alt="mountains" src="{{ config.base_url ~ "/img/skate.jpg" }}" />
+    <img alt="mountains" src="{{ config.base_url ~ "/img/track.jpeg" }}" />
   </div>
   <div class="contents-right">
     <h3> Athlete Progress Tracking </h3>
@@ -102,6 +102,9 @@
       formSpinner.style.display = 'none'; // Hide spinner
       if (result.result === 'success') {
         toastMessage.textContent = 'Your form has been submitted successfully.';
+
+        // Reset the form after successful submission
+        document.getElementById('contactForm').reset();
       } else {
         toastMessage.textContent = `Error: ${JSON.stringify(result.error)}`;
       }
