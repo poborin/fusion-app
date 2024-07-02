@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://poborin.github.io/fusion-app/sitemap.xml

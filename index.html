@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+    
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title></title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="https://poborin.github.io/fusion-app//main.css">
+</head>
+
+
+    <body>
+        
+<div id="particles-js">
+  <div class="header">
+      <h1>
+        <span class="site-title">Fusion</span>
+        <span class="site-description">Your coaching companion</span>
+      </h1>
+      <div class="header-icons">
+        <!-- <a aria-label="Send email" href="#contact"><i class="icon fa fa-envelope"></i></a>
+        <a aria-label="My Twitter" target="_blank" href="#"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
+        <a aria-label="My Google Plus" target="_blank" href="#"><i class="icon fa fa-google-plus" aria-hidden="true"></i></a>
+        <a aria-label="My Github" target="_blank" href="#"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a> -->
+      </div>
+      <div class="header-links">
+        <a class="link" href="#about" data-scroll>About</a>
+        <a class="link" href="#features" data-scroll>Features</a>
+        <a class="link" href="#contact" data-scroll>Contact</a>
+      </div>
+  </div>
+  <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
+</div>
+
+
+        <section id="about">
+ <div class="user-details">
+  <h1> About Fusion </h1>
+  <p> Welcome to Fusion, a cutting-edge platform designed to revolutionise the way sports coaches manage their administrative tasks. Our mission is to empower coaches by providing an integrated service, app, and web application that streamlines training plan creation, athlete communication, video sharing, and performance tracking, allowing you to focus on what truly matters: coaching. </p>
+</section>
+
+        <section id="features">
+<div class="user-details">
+  <h1> Features </h1>
+</div>
+<div class="user-features">
+  <div class="images-right">
+    <img alt="mountains" src="https://poborin.github.io/fusion-app/img/traning_plan.jpeg" />
+  </div>
+  <div class="contents">
+    <h3> Training Plan Creation </h3>
+    <p> Build comprehensive training plans with ease. Fusion offers intuitive tools to craft detailed schedules, drills, and exercise regimens tailored to your team's specific needs </p>
+  </div>
+</div>
+<div class="user-features">
+  <div class="images-left">
+    <img alt="mountains" src="https://poborin.github.io/fusion-app/img/communicate.jpeg" />
+  </div>
+  <div class="contents-right">
+    <h3> Team Communication </h3>
+    <p>Stay connected with your team effortlessly. Send messages, share updates, and coordinate activities directly through Fusion's secure communication channels</p>
+  </div>
+</div>
+<div class="user-features">
+  <div class="images-right">
+    <img alt="mountains" src="https://poborin.github.io/fusion-app/img/profile.jpeg" />
+  </div>
+  <div class="contents">
+    <h3> Athlete Profiles </h3>
+    <p> Create and manage detailed profiles for each athlete. Store vital information such as performance stats, personal goals, and training history, enabling a personalised coaching experience </p>
+  </div>
+</div>
+<div class="user-features">
+  <div class="images-left">
+    <img alt="mountains" src="https://poborin.github.io/fusion-app/img/track.jpeg" />
+  </div>
+  <div class="contents-right">
+    <h3> Athlete Progress Tracking </h3>
+    <p>Monitor your athletes' performance systematically. Track metrics, set goals, and review progress with detailed analytics and reports, ensuring your team stays on the path to success</p>
+  </div>
+</div>
+</section>
+
+        <section id="contact">
+<div class="form-title">
+  <h1>Contact</h1>
+  <p>We'd love to hear from you! Please fill out the form below, and a member of our team will get back to you promptly.</p>
+</div>
+<form id="contactForm" onsubmit="submitForm(event)">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" required>
+  </div>
+  <div class="form-group">
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+  <button class="submit-button" type="submit">Submit</button>
+</form>
+
+<div id="toast" class="toast">
+  <span id="toastMessage"></span>
+  <div class="spinner" id="formSpinner"></div>
+</div>
+
+<script>
+  async function submitForm(event) {
+    event.preventDefault();
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const formSpinner = document.getElementById('formSpinner');
+
+    // Show the toast
+    toast.style.display = 'flex';
+    toastMessage.textContent = 'Submitting form...';
+    formSpinner.style.display = 'block';
+
+    const url = 'https://script.google.com/macros/s/AKfycbwxqol1D2_fp7X-kBteOrFj2KngTEl2auDxxsS8ER7G1QN6eMPDja948ccEy9yDrIVR/exec';
+    const formData = new FormData(document.getElementById('contactForm'));
+    const data = new URLSearchParams(formData);
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: data
+      });
+
+      const result = await response.json();
+      formSpinner.style.display = 'none'; // Hide spinner
+      if (result.result === 'success') {
+        toastMessage.textContent = 'Your form has been submitted successfully.';
+
+        // Reset the form after successful submission
+        document.getElementById('contactForm').reset();
+      } else {
+        toastMessage.textContent = `Error: ${JSON.stringify(result.error)}`;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      formSpinner.style.display = 'none'; // Hide spinner
+      toastMessage.textContent = `There was an error submitting your form: ${error.message}`;
+    }
+
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 3000);
+  }
+</script>
+</section>
+
+        
+        <p></p>
+         
+<footer class="footer">
+    <p>&copy; Fusion</p>
+</footer>
+<script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://poborin.github.io/fusion-app/js/sweet-scroll.min.js"></script>
+<script src="https://poborin.github.io/fusion-app/js/app.js"></script>
+ 
+<!-- Google Analytics -->
+
+
+    </body>
+</html>
