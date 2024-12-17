@@ -1,17 +1,17 @@
 // Primary Colors
-$main: #ffffff; // White
-$sec: #1f4e79; // Gzhel Blue
+$main: #002E5D; // Dark Gzhel Blue
+$sec: #00509E; // Medium Gzhel Blue
 
 // Secondary Colors
-$main_secondary: #a3c4ec; // Soft Blue
-$gray: #e3e3e3; // Gray
+$main_secondary: #A5C8E1; // Light Gzhel Blue
+$gray: #2A3B4F; // Dark Gray-Blue for body text
 
 // Accent Colors
-$accent: #daa520; // Gold
-$button: #0a3d62; // Navy Blue
-$button_secondary: #a3c4ec; // Soft Blue
+$accent: #FFD700; // Example gold color for accents (you can adjust as needed)
+$button: #347AB7; // Royal Gzhel Blue for primary buttons
+$button_secondary: #1F4C91; // Slightly darker blue for secondary buttons
 
 // Typography Colors
-$text_primary: #333333; // Dark Gray
-$text_secondary: #666666; // Medium Gray
-$cut: 550px;
+$text_primary: #003366; // Dark navy blue for headings
+$text_secondary: #59718C; // Softer blue for body text
+$cut: 550px; // Example breakpoint value
